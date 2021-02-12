@@ -1,4 +1,4 @@
-package su.oilmap.OilMap;
+package su.oilmap.oilmap;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
