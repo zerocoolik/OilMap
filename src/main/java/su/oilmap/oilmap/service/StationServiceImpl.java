@@ -1,15 +1,17 @@
 package su.oilmap.oilmap.service;
 
-import com.fasterxml.jackson.databind.ObjectReader;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import su.oilmap.oilmap.domain.Coordinates;
 import su.oilmap.oilmap.domain.Station;
 import su.oilmap.oilmap.repositiry.StationRepository;
+
+import java.util.Optional;
 
 @Component("stationService")
 public class StationServiceImpl implements StationService {
 
+    @Autowired
     private final StationRepository stationRepository;
 
     public StationServiceImpl(ObjectProvider<StationRepository> repositoryProvider) {
@@ -17,12 +19,8 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public Iterable<Station> getStationById(Long id) {
-        return stationRepository.findStationById(id);
+    public Optional<Station> getStationById(int id) {
+        return stationRepository.findById(id);
     }
 
-    @Override
-    public Iterable<Station> getListStation(Coordinates coordinates) {
-        return stationRepository.findStationByCoordinates(coordinates);
-    }
 }

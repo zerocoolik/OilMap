@@ -1,9 +1,9 @@
 package su.oilmap.oilmap.service;
 
-import su.oilmap.oilmap.domain.Coordinates;
 import su.oilmap.oilmap.domain.Station;
 
+import java.util.Optional;
+
 public interface StationService {
-    Iterable<Station> getStationById(Long id);
-    Iterable<Station> getListStation(Coordinates coordinates);
+    Optional<Station> getStationById(int id);
 }
