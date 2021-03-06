@@ -13,16 +13,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "station")
 public class Station {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "id_provider")
-    private int idProvider;
-    @Column(name = "latitude")
-    private String latitude;
-    @Column(name = "longitude")
-    private String longitude;
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private Info info;
+  @Id
+  @Column(name = "station_id")
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "provider_id",referencedColumnName = "provider_id")
+  private Provider provider;
 }

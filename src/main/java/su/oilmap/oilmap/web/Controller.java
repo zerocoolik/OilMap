@@ -6,13 +6,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import su.oilmap.oilmap.ResourceNotFoundException;
 import su.oilmap.oilmap.domain.Station;
 import su.oilmap.oilmap.service.StationService;
 
-import java.util.Optional;
-
 @RestController
-@RequestMapping("/station/")
+@RequestMapping("api/v3/station/")
 public class Controller {
 
     @Autowired
@@ -23,8 +22,9 @@ public class Controller {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
-    public Optional<Station> getById(@PathVariable int id) {
-        return stationService.getStationById(id);
+    public Station getById(@PathVariable long id) {
+        return stationService.getStationById((int)id)
+                .orElseThrow(()->new ResourceNotFoundException("Station","Id",id));
     }
 
 }

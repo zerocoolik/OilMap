@@ -19,8 +19,9 @@ public class StationServiceImpl implements StationService {
     }
 
     @Override
-    public Optional<Station> getStationById(int id) {
-        return stationRepository.findById(id);
+    public Optional<Station> getStationById(long id) {
+        return stationRepository.findStationById(id);
     }
+
 
 }
