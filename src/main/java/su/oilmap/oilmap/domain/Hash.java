@@ -10,14 +10,12 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "provider")
-public class Provider {
+@Table(name = "hash")
+public class Hash {
   @Id
-  @Column(name = "provider_id")
+  @Column(name = "hash_id")
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-  @Column(name = "name")
-  private String name;
-  @Column(name = "url_logo")
-  private String urlLogo;
+  @Column(name = "hash")
+  private String hash;
 }
